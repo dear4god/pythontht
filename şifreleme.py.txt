@@ -1,0 +1,54 @@
+import random
+
+s1 = int(input('Parola minimum kaç karakter olsun?: '))
+s2 = int(input('Parola minimum kaç karakter olsun?: '))
+uzunluk = random.randint(s1, s2)
+
+
+harfler = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+sayilar = '0123456789'
+karakterler = '" \' ! # @ . , $'
+
+while True:
+    cevap_sayi = input('Parolanýzda sayý olsun mu? [E/H]: ')
+    if cevap_sayi != 'E' and cevap_sayi != 'H':
+        print('Hatalý giriþ - E veya H girin\n')
+        continue
+
+    while True:
+        cevap_harf = input('Parolanýzda harf olsun mu? [E/H]: ')
+        if cevap_harf != 'E' and cevap_harf != 'H':
+            print('Hatalý giriþ - E veya H girin\n')
+            continue
+        while True:
+            cevap_karakter = input('Parolanýzda özel karakter olsun mu? [E/H]: ')
+            if cevap_karakter != 'E' and cevap_karakter != 'H':
+                print('Hatalý giriþ - E veya H girin\n')
+                continue
+            break
+        break
+    break
+ 
+
+if cevap_sayi == 'E' and cevap_harf == 'E' and cevap_karakter == 'E':
+    liste = karakterler + sayilar+harfler
+if cevap_sayi == 'E' and cevap_harf == 'E' and cevap_karakter == 'H':
+    liste =sayilar+harfler
+if cevap_sayi == 'E' and cevap_harf == 'H' and cevap_karakter == 'E':
+    liste = karakterler + sayilar
+if cevap_sayi == 'H' and cevap_harf == 'E' and cevap_karakter == 'E':
+    liste = karakterler+harfler
+if cevap_sayi == 'H' and cevap_harf == 'H' and cevap_karakter == 'E':
+    liste = karakterler
+if cevap_sayi == 'H' and cevap_harf == 'E' and cevap_karakter == 'H':
+    liste = harfler    
+if cevap_sayi == 'E' and cevap_harf == 'H' and cevap_karakter == 'H':
+    liste = sayilar   
+
+
+parola = ''
+
+for c in range(uzunluk):
+    parola += random.choice(liste)
+    
+print(parola)
